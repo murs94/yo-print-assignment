@@ -166,7 +166,7 @@
                     var xhr = new window.XMLHttpRequest();
                     xhr.upload.addEventListener('progress', function(evt) {
                         if (evt.lengthComputable) {
-                            var percent = Math.round((evt.loaded / evt.total) * 100);
+                            var percent = Math.round((evt.loaded / evt.total) * 99);
                             $('#frontendBar').css('width', percent + '%');
                             $('#frontendPercent').text(percent + '%');
                         }
@@ -174,7 +174,8 @@
                     return xhr;
                 },
                 success: function(response) {
-                    alert('Upload successful!');
+                    $('#frontendBar').css('width', '100%');
+                    $('#frontendPercent').text('100%');
                     dropArea.text('Select file/Drag and drop');
                     fileToUpload = null;
                     fileInput.val('');
